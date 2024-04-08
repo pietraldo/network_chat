@@ -8,4 +8,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="server_app\**" />
+    <EmbeddedResource Remove="server_app\**" />
+    <None Remove="server_app\**" />
+  </ItemGroup>
+
 </Project>

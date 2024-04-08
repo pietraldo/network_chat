@@ -51,7 +51,9 @@ namespace chat_wind_forms
             comunication1 = await Task.Run(() =>
                 new Comunication(txtHost.Text, int.Parse(txtPort.Text), txtName.Text, txtKey.Text,this));
 
-            this.Invoke(new Action(() => this.DialogResult = DialogResult.OK));
+
+            DialogResult a = (comunication1.is_connected) ? DialogResult.OK : DialogResult.Abort;
+            this.Invoke(new Action(() => this.DialogResult = a));
             btnConnect.Enabled = true;
         }
     }
