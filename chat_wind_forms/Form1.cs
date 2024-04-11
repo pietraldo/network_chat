@@ -50,12 +50,13 @@ namespace chat_wind_forms
                 nowaKontrolka.Margin = newPadding;
             }
 
-            nowaKontrolka.Width = flowLayoutPanel1.Width - 70;
+            nowaKontrolka.Width = flowLayoutPanel1.Width - 90;
             controls.Add(nowaKontrolka);
 
             flowLayoutPanel1.Controls.Add(nowaKontrolka);
 
             flowLayoutPanel1.ScrollControlIntoView(nowaKontrolka);
+            setPanelsScrolBars();
         }
 
         private void SendOurMessage()
