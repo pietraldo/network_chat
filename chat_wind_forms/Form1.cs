@@ -55,9 +55,9 @@ namespace chat_wind_forms
             controls.Add(nowaKontrolka);
 
             flowLayoutPanel1.Controls.Add(nowaKontrolka);
-
-            flowLayoutPanel1.ScrollControlIntoView(nowaKontrolka);
             setPanelsScrolBars();
+            flowLayoutPanel1.ScrollControlIntoView(nowaKontrolka);
+            
         }
 
         private void SendOurMessage()
@@ -120,6 +120,8 @@ namespace chat_wind_forms
                     control.Width = flowLayoutPanel1.Width - 90;
             }
             setPanelsScrolBars();
+            if(controls.Count > 0)
+            flowLayoutPanel1.ScrollControlIntoView(controls.Last());
         }
 
 
@@ -163,8 +165,9 @@ namespace chat_wind_forms
             controls.Add(label);
             
             flowLayoutPanel1.Controls.Add(label);
-            flowLayoutPanel1.ScrollControlIntoView(label);
             setPanelsScrolBars();
+            flowLayoutPanel1.ScrollControlIntoView(label);
+            
         }
 
         private void btnConect_Click(object sender, EventArgs e)

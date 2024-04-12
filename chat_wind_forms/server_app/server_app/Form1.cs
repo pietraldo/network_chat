@@ -1,10 +1,7 @@
-﻿using System.Net.Sockets;
+﻿using Microsoft.VisualBasic.ApplicationServices;
 using System.Net;
-using System.Text;
-using System.Drawing;
+using System.Net.Sockets;
 using System.Text.Json;
-using System.Windows.Forms;
-using Microsoft.VisualBasic.ApplicationServices;
 
 namespace server_app
 {
@@ -28,7 +25,7 @@ namespace server_app
             buttonColumn.UseColumnTextForButtonValue = true;
             dataGridView1.Columns.Add(buttonColumn);
 
-
+            UpdateUserListEvent += updateUserGrid;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
         }
 
@@ -45,6 +42,8 @@ namespace server_app
 
         public delegate void RecivedMessageHandler(Messages.Message msg, User us);
         public event RecivedMessageHandler RecivedMessage;
+
+
 
         public void RecivedMessagePassForeward(Messages.Message msg, User us)
         {
@@ -117,14 +116,28 @@ namespace server_app
             }
             catch (Exception ex)
             {
-                MessageBox.Show("User disconnected");
-                //disconectUser(user.Id);
-                
                 return null;
             }
 
             if (lineRecived == null)
             {
+               
+
+                User userToRemove = users.Find(u => u.Id == user.Id);
+                if (userToRemove != null)
+                {
+                    userToRemove.Client.Close();
+                    users.Remove(userToRemove);
+                }
+
+                this.Invoke(new Action(() =>
+                {
+                    UpdateUserListEvent?.Invoke(this, new EventArgs());
+                    addToLog($"{user.UserName} disconnected"); ;
+                }
+                
+                
+                ));
                 return null;
             }
 
@@ -133,7 +146,8 @@ namespace server_app
             return msg;
         }
 
-        private void updateUserGrid()
+        public event EventHandler<EventArgs> UpdateUserListEvent;
+        private void updateUserGrid(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
             foreach (var user in users)
@@ -160,7 +174,7 @@ namespace server_app
                         Messages.Message message = new Messages.Message(txtName.Text, Messages.Message.Authorized, DateTime.Now);
                         SendMessage(message, user);
                         users.Add(user);
-                        updateUserGrid();
+                        updateUserGrid(this, new EventArgs());
                         addToLog($" {user.UserName} connected");
 
                         Task.Run(() =>
@@ -188,7 +202,7 @@ namespace server_app
                 }
                 catch (Exception ex)
                 {
-                    addToLog(ex.Message);
+                    //addToLog(ex.Message);
                     if (!is_running)
                         break;
                 }
@@ -238,7 +252,7 @@ namespace server_app
                 {
                     addToLog(ex.Message);
                 }
-                
+
             }
             is_running = !is_running;
         }
@@ -271,10 +285,10 @@ namespace server_app
             User userToRemove = users.Find(u => u.Id == id);
             if (userToRemove != null)
             {
+                addToLog($"{userToRemove.UserName} disconnected");
                 userToRemove.Client.Close();
                 users.Remove(userToRemove);
-
-                updateUserGrid();
+                updateUserGrid(this, new EventArgs());
             }
         }
         private void btnDisconectAll_Click(object sender, EventArgs e)

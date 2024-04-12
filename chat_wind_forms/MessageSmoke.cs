@@ -76,12 +76,16 @@ namespace chat_wind_forms
         }
         public void SetWidthTextBox()
         {
-            Size size = TextRenderer.MeasureText(txtMsg.Text, txtMsg.Font);
+            Size size = TextRenderer.MeasureText(txtMsg.CreateGraphics(), txtMsg.Text, txtMsg.Font,
+                new Size(txtMsg.Width, 0), TextFormatFlags.TextBoxControl | TextFormatFlags.WordBreak);
+            
+/*            
             int lines = size.Width / (this.Width - 20) + 1;
 
             txtMsg.Size = new Size(txtMsg.Width, size.Height * lines);
-            txtMsg.Margin = new Padding(0, 0, 0, 20);
+            txtMsg.Margin = new Padding(0, 0, 0, 20);*/
 
+            txtMsg.Height = size.Height;
         }
 
         private void txtMsg_Click(object sender, EventArgs e)
