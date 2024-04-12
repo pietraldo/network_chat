@@ -27,6 +27,7 @@ namespace chat_wind_forms
             flowLayoutPanel1.VerticalScroll.Visible = true;
             flowLayoutPanel1.HorizontalScroll.Enabled = false;
             flowLayoutPanel1.HorizontalScroll.Visible = false;
+            flowLayoutPanel1.HorizontalScroll.Maximum = 0;
             flowLayoutPanel1.AutoScroll = true;
         }
         List<Control> controls = new List<Control>();
@@ -116,7 +117,7 @@ namespace chat_wind_forms
                 if (control is Label label)
                     control.Width = flowLayoutPanel1.Width-40;
                 else
-                    control.Width = flowLayoutPanel1.Width - 70;
+                    control.Width = flowLayoutPanel1.Width - 90;
             }
             setPanelsScrolBars();
         }
@@ -163,6 +164,7 @@ namespace chat_wind_forms
             
             flowLayoutPanel1.Controls.Add(label);
             flowLayoutPanel1.ScrollControlIntoView(label);
+            setPanelsScrolBars();
         }
 
         private void btnConect_Click(object sender, EventArgs e)

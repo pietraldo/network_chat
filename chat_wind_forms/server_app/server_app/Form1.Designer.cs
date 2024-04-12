@@ -168,6 +168,7 @@
             checkBoxShowKey.TabIndex = 17;
             checkBoxShowKey.Text = "Show key";
             checkBoxShowKey.UseVisualStyleBackColor = true;
+            checkBoxShowKey.CheckedChanged += checkBoxShowKey_CheckedChanged;
             // 
             // txtPort
             // 

@@ -117,6 +117,9 @@ namespace server_app
             }
             catch (Exception ex)
             {
+                MessageBox.Show("User disconnected");
+                //disconectUser(user.Id);
+                
                 return null;
             }
 
@@ -167,6 +170,8 @@ namespace server_app
                                 Messages.Message msg = ReadMessage(user);
                                 if (msg != null)
                                     RecivedMessage.Invoke(msg, user);
+                                else
+                                    break;
                             }
                         });
                     }
@@ -199,7 +204,7 @@ namespace server_app
         private TcpListener listener;
         private async void btnStart_Click(object sender, EventArgs e)
         {
-            if(is_running)
+            if (is_running)
             {
                 btnStart.Text = "Start";
                 while (users.Count > 0)
@@ -208,22 +213,34 @@ namespace server_app
                 }
                 listener.Dispose();
                 addToLog("Stoping server");
+                txtHost.Enabled = true;
+                txtPort.Enabled = true;
             }
             else
             {
-                btnStart.Text = "Stop";
-                string host = txtHost.Text;
-                if (host == "localhost")
+                try
                 {
-                    host = "127.0.0.1";
+                    txtHost.Enabled = false;
+                    txtPort.Enabled = false;
+                    btnStart.Text = "Stop";
+                    string host = txtHost.Text;
+                    if (host == "localhost")
+                    {
+                        host = "127.0.0.1";
+                    }
+                    var ipEndPoint = new IPEndPoint(IPAddress.Parse(host), int.Parse(txtPort.Text));
+                    addToLog($"Starting host on address: {IPAddress.Parse(host)} on port: {int.Parse(txtPort.Text)}");
+                    listener = new(ipEndPoint);
+                    listener.Start();
+                    listenServer(listener);
                 }
-                var ipEndPoint = new IPEndPoint(IPAddress.Parse(host), int.Parse(txtPort.Text));
-                addToLog($"Starting host on address: {IPAddress.Parse(host)} on port: {int.Parse(txtPort.Text)}");
-                listener = new(ipEndPoint);
-                listener.Start();
-                listenServer(listener);
+                catch (Exception ex)
+                {
+                    addToLog(ex.Message);
+                }
+                
             }
-            is_running =!is_running;
+            is_running = !is_running;
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -262,10 +279,20 @@ namespace server_app
         }
         private void btnDisconectAll_Click(object sender, EventArgs e)
         {
-            while(users.Count > 0)
+            while (users.Count > 0)
             {
                 disconectUser(users.First().Id);
             }
+        }
+
+        private void checkBoxShowKey_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxShowKey.Checked == true)
+            {
+                txtKey.PasswordChar = '\0';
+            }
+            else
+                txtKey.PasswordChar = '*';
         }
     }
 }
