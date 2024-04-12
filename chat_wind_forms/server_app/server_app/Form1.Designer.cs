@@ -73,10 +73,11 @@
             tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(761, 392);
+            tableLayoutPanel1.Size = new Size(870, 523);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // dataGridView1
@@ -89,13 +90,14 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { id, name });
             dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(427, 3);
+            dataGridView1.Location = new Point(488, 4);
+            dataGridView1.Margin = new Padding(3, 4, 3, 4);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(331, 386);
+            dataGridView1.Size = new Size(379, 515);
             dataGridView1.TabIndex = 0;
             // 
             // id
@@ -119,12 +121,13 @@
             tableLayoutPanel2.Controls.Add(panel1, 0, 0);
             tableLayoutPanel2.Controls.Add(panel2, 0, 1);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(3, 3);
+            tableLayoutPanel2.Location = new Point(3, 4);
+            tableLayoutPanel2.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 32.675045F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 67.32496F));
-            tableLayoutPanel2.Size = new Size(418, 386);
+            tableLayoutPanel2.Size = new Size(479, 515);
             tableLayoutPanel2.TabIndex = 1;
             // 
             // panel1
@@ -132,9 +135,10 @@
             panel1.Controls.Add(panel5);
             panel1.Controls.Add(btnStart);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(3, 3);
+            panel1.Location = new Point(3, 4);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(412, 120);
+            panel1.Size = new Size(473, 160);
             panel1.TabIndex = 0;
             // 
             // panel5
@@ -149,27 +153,28 @@
             panel5.Controls.Add(label2);
             panel5.Controls.Add(txtHost);
             panel5.Controls.Add(label5);
-            panel5.Location = new Point(134, 3);
-            panel5.Margin = new Padding(3, 2, 3, 2);
+            panel5.Location = new Point(155, 4);
             panel5.Name = "panel5";
-            panel5.Size = new Size(274, 129);
+            panel5.Size = new Size(313, 172);
             panel5.TabIndex = 1;
             // 
             // checkBoxShowKey
             // 
             checkBoxShowKey.AutoSize = true;
-            checkBoxShowKey.Location = new Point(184, 55);
+            checkBoxShowKey.Location = new Point(210, 73);
+            checkBoxShowKey.Margin = new Padding(3, 4, 3, 4);
             checkBoxShowKey.Name = "checkBoxShowKey";
-            checkBoxShowKey.Size = new Size(76, 19);
+            checkBoxShowKey.Size = new Size(93, 24);
             checkBoxShowKey.TabIndex = 17;
             checkBoxShowKey.Text = "Show key";
             checkBoxShowKey.UseVisualStyleBackColor = true;
             // 
             // txtPort
             // 
-            txtPort.Location = new Point(192, 2);
+            txtPort.Location = new Point(219, 3);
+            txtPort.Margin = new Padding(3, 4, 3, 4);
             txtPort.Name = "txtPort";
-            txtPort.Size = new Size(73, 23);
+            txtPort.Size = new Size(83, 27);
             txtPort.TabIndex = 15;
             txtPort.Text = "9000";
             txtPort.TextAlign = HorizontalAlignment.Center;
@@ -177,35 +182,37 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(156, 5);
+            label4.Location = new Point(178, 7);
             label4.Name = "label4";
-            label4.Size = new Size(32, 15);
+            label4.Size = new Size(38, 20);
             label4.TabIndex = 16;
             label4.Text = "Port:";
             // 
             // txtKey
             // 
-            txtKey.Location = new Point(192, 28);
+            txtKey.Location = new Point(219, 37);
+            txtKey.Margin = new Padding(3, 4, 3, 4);
             txtKey.Name = "txtKey";
             txtKey.PasswordChar = '*';
-            txtKey.Size = new Size(73, 23);
+            txtKey.Size = new Size(83, 27);
             txtKey.TabIndex = 11;
             txtKey.TextAlign = HorizontalAlignment.Center;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(156, 31);
+            label3.Location = new Point(178, 41);
             label3.Name = "label3";
-            label3.Size = new Size(29, 15);
+            label3.Size = new Size(36, 20);
             label3.TabIndex = 13;
             label3.Text = "Key:";
             // 
             // txtName
             // 
-            txtName.Location = new Point(78, 31);
+            txtName.Location = new Point(89, 41);
+            txtName.Margin = new Padding(3, 4, 3, 4);
             txtName.Name = "txtName";
-            txtName.Size = new Size(73, 23);
+            txtName.Size = new Size(83, 27);
             txtName.TabIndex = 10;
             txtName.Text = "server";
             txtName.TextAlign = HorizontalAlignment.Center;
@@ -213,17 +220,18 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(4, 34);
+            label2.Location = new Point(5, 45);
             label2.Name = "label2";
-            label2.Size = new Size(63, 15);
+            label2.Size = new Size(78, 20);
             label2.TabIndex = 12;
             label2.Text = "Username:";
             // 
             // txtHost
             // 
-            txtHost.Location = new Point(78, 3);
+            txtHost.Location = new Point(89, 4);
+            txtHost.Margin = new Padding(3, 4, 3, 4);
             txtHost.Name = "txtHost";
-            txtHost.Size = new Size(73, 23);
+            txtHost.Size = new Size(83, 27);
             txtHost.TabIndex = 14;
             txtHost.Text = "localhost";
             txtHost.TextAlign = HorizontalAlignment.Center;
@@ -231,17 +239,18 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(16, 5);
+            label5.Location = new Point(18, 7);
             label5.Name = "label5";
-            label5.Size = new Size(52, 15);
+            label5.Size = new Size(65, 20);
             label5.TabIndex = 9;
             label5.Text = "Address:";
             // 
             // btnStart
             // 
-            btnStart.Location = new Point(8, 4);
+            btnStart.Location = new Point(9, 5);
+            btnStart.Margin = new Padding(3, 4, 3, 4);
             btnStart.Name = "btnStart";
-            btnStart.Size = new Size(75, 23);
+            btnStart.Size = new Size(86, 31);
             btnStart.TabIndex = 0;
             btnStart.Text = "Start";
             btnStart.UseVisualStyleBackColor = true;
@@ -254,10 +263,9 @@
             panel2.Controls.Add(panel3);
             panel2.Controls.Add(txtLog);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(3, 128);
-            panel2.Margin = new Padding(3, 2, 3, 2);
+            panel2.Location = new Point(3, 171);
             panel2.Name = "panel2";
-            panel2.Size = new Size(412, 256);
+            panel2.Size = new Size(473, 341);
             panel2.TabIndex = 1;
             // 
             // panel4
@@ -265,19 +273,17 @@
             panel4.Controls.Add(btnSend);
             panel4.Controls.Add(txtMsg);
             panel4.Dock = DockStyle.Bottom;
-            panel4.Location = new Point(0, 230);
-            panel4.Margin = new Padding(3, 2, 3, 2);
+            panel4.Location = new Point(0, 306);
             panel4.Name = "panel4";
-            panel4.Size = new Size(412, 26);
+            panel4.Size = new Size(473, 35);
             panel4.TabIndex = 3;
             // 
             // btnSend
             // 
             btnSend.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnSend.Location = new Point(326, -1);
-            btnSend.Margin = new Padding(3, 2, 3, 2);
+            btnSend.Location = new Point(375, -1);
             btnSend.Name = "btnSend";
-            btnSend.Size = new Size(82, 22);
+            btnSend.Size = new Size(94, 29);
             btnSend.TabIndex = 3;
             btnSend.Text = "Send";
             btnSend.UseVisualStyleBackColor = true;
@@ -286,10 +292,9 @@
             // txtMsg
             // 
             txtMsg.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            txtMsg.Location = new Point(8, 0);
-            txtMsg.Margin = new Padding(3, 2, 3, 2);
+            txtMsg.Location = new Point(9, 1);
             txtMsg.Name = "txtMsg";
-            txtMsg.Size = new Size(314, 23);
+            txtMsg.Size = new Size(360, 27);
             txtMsg.TabIndex = 2;
             txtMsg.KeyDown += txtMsg_KeyDown;
             // 
@@ -301,18 +306,16 @@
             panel3.Controls.Add(btnClear);
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(0, 0);
-            panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(412, 47);
+            panel3.Size = new Size(473, 63);
             panel3.TabIndex = 2;
             // 
             // btnDisconectAll
             // 
             btnDisconectAll.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnDisconectAll.Location = new Point(302, 14);
-            btnDisconectAll.Margin = new Padding(3, 2, 3, 2);
+            btnDisconectAll.Location = new Point(347, 19);
             btnDisconectAll.Name = "btnDisconectAll";
-            btnDisconectAll.Size = new Size(105, 22);
+            btnDisconectAll.Size = new Size(120, 29);
             btnDisconectAll.TabIndex = 2;
             btnDisconectAll.Text = "Disconect all";
             btnDisconectAll.UseVisualStyleBackColor = true;
@@ -321,19 +324,18 @@
             // label1
             // 
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label1.Location = new Point(95, 14);
+            label1.Location = new Point(109, 19);
             label1.Name = "label1";
-            label1.Size = new Size(224, 22);
+            label1.Size = new Size(258, 29);
             label1.TabIndex = 0;
             label1.Text = "Log";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnClear
             // 
-            btnClear.Location = new Point(8, 14);
-            btnClear.Margin = new Padding(3, 2, 3, 2);
+            btnClear.Location = new Point(9, 19);
             btnClear.Name = "btnClear";
-            btnClear.Size = new Size(82, 22);
+            btnClear.Size = new Size(94, 29);
             btnClear.TabIndex = 1;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = true;
@@ -343,21 +345,22 @@
             // 
             txtLog.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             txtLog.BackColor = Color.White;
-            txtLog.Location = new Point(5, 52);
-            txtLog.Margin = new Padding(3, 2, 3, 2);
+            txtLog.Location = new Point(6, 69);
             txtLog.Multiline = true;
             txtLog.Name = "txtLog";
             txtLog.ReadOnly = true;
-            txtLog.Size = new Size(404, 174);
+            txtLog.ScrollBars = ScrollBars.Vertical;
+            txtLog.Size = new Size(463, 231);
             txtLog.TabIndex = 1;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(761, 392);
+            ClientSize = new Size(870, 523);
             Controls.Add(tableLayoutPanel1);
-            MinimumSize = new Size(702, 310);
+            Margin = new Padding(3, 4, 3, 4);
+            MinimumSize = new Size(800, 398);
             Name = "Form1";
             Text = "Server";
             tableLayoutPanel1.ResumeLayout(false);

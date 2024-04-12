@@ -158,6 +158,7 @@ namespace server_app
                         SendMessage(message, user);
                         users.Add(user);
                         updateUserGrid();
+                        addToLog($" {user.UserName} connected");
 
                         Task.Run(() =>
                         {
@@ -182,28 +183,47 @@ namespace server_app
                 }
                 catch (Exception ex)
                 {
-                    txtLog.Text += ex.Message;
+                    addToLog(ex.Message);
+                    if (!is_running)
+                        break;
                 }
             }
         }
         private void addToLog(string txt)
         {
 
-            txtLog.Text += DateTime.Now.ToString("HH:mm") + " " + txt + "\r\n";
+            txtLog.Text += DateTime.Now.ToString("HH:mm") + "| " + txt + "\r\n";
         }
+
+        private bool is_running = false;
+        private TcpListener listener;
         private async void btnStart_Click(object sender, EventArgs e)
         {
-            btnStart.Enabled = false;
-            string host = txtHost.Text;
-            if (host == "localhost")
+            if(is_running)
             {
-                host = "127.0.0.1";
+                btnStart.Text = "Start";
+                while (users.Count > 0)
+                {
+                    disconectUser(users.First().Id);
+                }
+                listener.Dispose();
+                addToLog("Stoping server");
             }
-            var ipEndPoint = new IPEndPoint(IPAddress.Parse(host), int.Parse(txtPort.Text));
-            addToLog($"Starting host on address: {IPAddress.Parse(host)} on port: {int.Parse(txtPort.Text)}");
-            TcpListener listener = new(ipEndPoint);
-            listener.Start();
-            listenServer(listener);
+            else
+            {
+                btnStart.Text = "Stop";
+                string host = txtHost.Text;
+                if (host == "localhost")
+                {
+                    host = "127.0.0.1";
+                }
+                var ipEndPoint = new IPEndPoint(IPAddress.Parse(host), int.Parse(txtPort.Text));
+                addToLog($"Starting host on address: {IPAddress.Parse(host)} on port: {int.Parse(txtPort.Text)}");
+                listener = new(ipEndPoint);
+                listener.Start();
+                listenServer(listener);
+            }
+            is_running =!is_running;
         }
 
         private void btnClear_Click(object sender, EventArgs e)
