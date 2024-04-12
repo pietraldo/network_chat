@@ -133,7 +133,10 @@ namespace server_app
                 this.Invoke(new Action(() =>
                 {
                     UpdateUserListEvent?.Invoke(this, new EventArgs());
-                    addToLog($"{user.UserName} disconnected"); ;
+                    addToLog($"{user.UserName} disconnected");
+                    
+                    Messages.Message message = new Messages.Message(txtName.Text, $"{user.UserName} disconnected", DateTime.Now);
+                    RecivedMessage.Invoke(message, new User(txtName.Text));
                 }
                 
                 
@@ -288,6 +291,10 @@ namespace server_app
                 addToLog($"{userToRemove.UserName} disconnected");
                 userToRemove.Client.Close();
                 users.Remove(userToRemove);
+
+                Messages.Message message = new Messages.Message(txtHost.Text, $"{txtHost.Text} disconnected", DateTime.Now);
+                RecivedMessage.Invoke(message, new User(txtName.Text));
+
                 updateUserGrid(this, new EventArgs());
             }
         }
