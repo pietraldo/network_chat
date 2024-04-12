@@ -180,6 +180,10 @@ namespace server_app
                         updateUserGrid(this, new EventArgs());
                         addToLog($" {user.UserName} connected");
 
+
+                        Messages.Message mm = new Messages.Message(txtName.Text, $"{user.UserName} connected", DateTime.Now);
+                        RecivedMessage.Invoke(mm, user);
+
                         Task.Run(() =>
                         {
                             while (true)
@@ -292,7 +296,7 @@ namespace server_app
                 userToRemove.Client.Close();
                 users.Remove(userToRemove);
 
-                Messages.Message message = new Messages.Message(txtHost.Text, $"{txtHost.Text} disconnected", DateTime.Now);
+                Messages.Message message = new Messages.Message(txtName.Text, $"{userToRemove.UserName} disconnected", DateTime.Now);
                 RecivedMessage.Invoke(message, new User(txtName.Text));
 
                 updateUserGrid(this, new EventArgs());
